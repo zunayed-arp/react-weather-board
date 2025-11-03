@@ -1,5 +1,5 @@
-import useWeather from "../../../rnext/src/hooks/useWeather";
 import { WeatherContext } from "../context";
+import { useWeather } from "../hooks/index";
 
 const WeatherProvider = ({ children }) => {
   const { weatherData, error, loading } = useWeather();

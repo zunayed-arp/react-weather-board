@@ -33,17 +33,19 @@ const useWeather = () => {
           import.meta.env.VITE_WEATHER_API_KEY
         }&units=metric`
       );
+
       if (!response.ok) {
         const errorMessage = `Fething weather data failed ${response.status}`;
         throw new Error(errorMessage);
       }
 
       const data = await response.json();
+      console.log(data.weather[0].main);
 
       const updateWeatherData = {
         ...weatherData,
         location: data?.name,
-        climate: location?.weather[0]?.main,
+        climate: data?.weather[0]?.main,
         temperature: data?.main?.temp,
         maxTemperature: data?.main?.temp_max,
         minTemperature: data?.main?.temp_min,
